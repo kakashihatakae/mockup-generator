@@ -3,90 +3,111 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-const tiers = [
+const plans = [
   {
-    name: "Free",
-    price: "$0",
-    description: "Perfect for trying out MockForge.",
-    features: ["5 mockups per month", "Standard quality", "Watermarked exports", "Basic device library"],
-    cta: "Start Free",
-    popular: false,
+    name: "Starter",
+    price: "Free",
+    description: "Perfect for trying out the engine.",
+    features: [
+      "20 free generation credits",
+      "Standard 1080p exports",
+      "Basic apparel templates",
+      "Community support"
+    ],
+    cta: "Get Started Free",
+    highlighted: false,
   },
   {
     name: "Pro",
-    price: "$19",
+    price: "$29",
     period: "/mo",
-    description: "For professionals who need high-quality assets.",
-    features: ["Unlimited mockups", "4K export quality", "No watermarks", "Full premium library", "API access"],
-    cta: "Get Pro",
-    popular: true,
+    description: "For independent designers and creators.",
+    features: [
+      "Unlimited generations",
+      "4K high-res exports",
+      "Premium garment library",
+      "Commercial license",
+      "Priority rendering"
+    ],
+    cta: "Start 14-day Trial",
+    highlighted: true,
   },
   {
-    name: "Studio",
-    price: "$49",
-    period: "/mo",
-    description: "For teams working at scale.",
-    features: ["Everything in Pro", "Custom 3D environments", "Team collaboration", "Priority support", "White-label exports"],
+    name: "Enterprise",
+    price: "Custom",
+    description: "For large teams and high-volume brands.",
+    features: [
+      "Custom 3D model integration",
+      "API access",
+      "8K editorial exports",
+      "Dedicated account manager",
+      "SSO & advanced security"
+    ],
     cta: "Contact Sales",
-    popular: false,
+    highlighted: false,
   }
 ];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Simple, transparent pricing</h2>
-          <p className="text-muted text-lg max-w-2xl mx-auto">Start for free, upgrade when you need more power.</p>
-        </div>
+    <section id="pricing" className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-[40px] md:text-[56px] leading-[1.05] font-semibold tracking-[-0.015em] mb-4">
+          Simple, transparent pricing.
+        </h2>
+        <p className="text-[21px] text-muted tracking-tight">
+          Start for free, upgrade when you need more power.
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-center">
-          {tiers.map((tier, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className={`relative rounded-3xl p-8 ${
-                tier.popular 
-                  ? "bg-gradient-to-b from-primary/20 to-black border-2 border-primary shadow-[0_0_40px_rgba(124,92,255,0.2)] md:-translate-y-4" 
-                  : "glass border border-white/10"
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {plans.map((plan, i) => (
+          <motion.div
+            key={plan.name}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className={`apple-card p-8 flex flex-col ${
+              plan.highlighted ? "border-primary/30 shadow-[0_8px_30px_rgba(0,113,227,0.12)] relative" : ""
+            }`}
+          >
+            {plan.highlighted && (
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full">
+                Most Popular
+              </div>
+            )}
+            
+            <h3 className="text-[24px] font-semibold tracking-tight mb-2">{plan.name}</h3>
+            <p className="text-[15px] text-muted mb-6">{plan.description}</p>
+            
+            <div className="mb-8 flex items-baseline">
+              <span className="text-[48px] font-bold tracking-tight">{plan.price}</span>
+              {plan.period && <span className="text-[17px] text-muted ml-1">{plan.period}</span>}
+            </div>
+
+            <ul className="space-y-4 mb-8 flex-1">
+              {plan.features.map((feature, j) => (
+                <li key={j} className="flex items-start gap-3">
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-primary" />
+                  </div>
+                  <span className="text-[15px] leading-tight">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              className={`w-full py-3.5 rounded-full font-medium text-[15px] transition-colors ${
+                plan.highlighted 
+                  ? "bg-primary text-white hover:bg-primary-hover" 
+                  : "bg-black/[0.05] text-foreground hover:bg-black/[0.08]"
               }`}
             >
-              {tier.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-white text-xs font-bold uppercase tracking-wider rounded-full">
-                  Most Popular
-                </div>
-              )}
-              
-              <h3 className="text-xl font-medium mb-2">{tier.name}</h3>
-              <div className="mb-4">
-                <span className="text-4xl font-bold">{tier.price}</span>
-                {tier.period && <span className="text-muted">{tier.period}</span>}
-              </div>
-              <p className="text-sm text-muted mb-8 h-10">{tier.description}</p>
-              
-              <button className={`w-full py-3 rounded-xl font-bold transition-all mb-8 ${
-                tier.popular 
-                  ? "bg-primary text-white hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(124,92,255,0.4)]" 
-                  : "bg-white/10 text-white hover:bg-white/20"
-              }`}>
-                {tier.cta}
-              </button>
-
-              <ul className="space-y-4">
-                {tier.features.map((feature, fIdx) => (
-                  <li key={fIdx} className="flex items-center gap-3 text-sm text-zinc-300">
-                    <Check className="w-4 h-4 text-accent flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+              {plan.cta}
+            </button>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
