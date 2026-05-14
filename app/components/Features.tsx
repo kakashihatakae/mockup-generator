@@ -5,23 +5,23 @@ import Image from "next/image";
 
 const featureDetails = [
   {
-    title: "Heavyweight Cotton Hoodie",
-    desc: "Achieve the perfect streetwear aesthetic. Our engine accurately renders the thick fabric folds, drawstrings, and subtle material grain of a premium heavyweight hoodie.",
-    src: "/mockups/hero.png",
-    badge: "Most Popular"
-  },
-  {
-    title: "Canvas Tote Bag",
+    title: "T-shirt Mockups",
     desc: "Elevate your branding presentations. The engine perfectly wraps your design around the natural curves and wrinkles of heavy cotton canvas, reacting naturally to the studio lighting.",
-    src: "/mockups/totebag.png",
-    badge: "New Material"
+    src: "/mockups/asian_t_shirt_1.png",
+    badge: "T-shirt"
   },
   {
-    title: "Matte Ceramic Mug",
-    desc: "Notice the way the light catches the curved edge. Our reflection algorithms ensure that your artwork conforms seamlessly to cylindrical objects without distortion.",
-    src: "/mockups/coffeecup.png",
-    badge: "Perfect Reflections"
-  }
+    title: "Hoodie Mockups",
+    desc: "Achieve the perfect streetwear aesthetic. Our engine accurately renders the thick fabric folds, drawstrings, and subtle material grain of a premium heavyweight hoodie.",
+    src: "/mockups/hoodie_1.png",
+    badge: "Hoodie"
+  },
+  // {
+  //   title: "Matte Ceramic Mug",
+  //   desc: "Notice the way the light catches the curved edge. Our reflection algorithms ensure that your artwork conforms seamlessly to cylindrical objects without distortion.",
+  //   src: "/mockups/coffeecup.png",
+  //   badge: "Perfect Reflections"
+  // }
 ];
 
 export function Features() {
@@ -49,7 +49,7 @@ export function Features() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:w-1/2"
+              className="lg:w-7/12"
             >
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-black/[0.04] bg-[#f5f5f7]">
                 <Image 
@@ -66,7 +66,7 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="lg:w-1/2 lg:px-12"
+              className="lg:w-5/12 lg:px-12"
             >
               <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-[13px] font-semibold tracking-wide mb-6">
                 {feature.badge}

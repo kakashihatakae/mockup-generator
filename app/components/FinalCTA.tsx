@@ -18,9 +18,9 @@ export function FinalCTA() {
           <Link href="/signup" className="apple-btn-primary text-[17px] py-4 px-10 w-full sm:w-auto">
             Get your 20 free credits
           </Link>
-          <Link href="#pricing" className="apple-btn-secondary text-[17px] py-4 px-10 w-full sm:w-auto">
+          {/* <Link href="#pricing" className="apple-btn-secondary text-[17px] py-4 px-10 w-full sm:w-auto">
             View full pricing
-          </Link>
+          </Link> */}
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-[13px] text-muted font-medium">
